@@ -1,0 +1,10 @@
+IDEAS
+=====
+
+ghost radar - show ghost directions on screen edge
+random spawning ghosts
+    - increased difficulty and rare spawns as score increases
+powerups
+health pickups
+
+bosses
