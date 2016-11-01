@@ -7,14 +7,19 @@ function Player:initialize(image)
     Sprite.initialize(self, image)
     self.velocity = vec(0, 0)
     self.acceleration = vec(0, 0)
+
+    self.thrust = 15
+    self.maxspeed = 10
+    self.rotspeed = 90
+    self.friction = 1.04
 end
 
 function Player:input(dt)
-    if Input:down 'forwards' then self:accelerate(5 * dt) end
+    if Input:down 'forwards' then self:accelerate(self.thrust * dt) end
     if Input:down 'reverse'  then self.velocity = self.velocity / 1.1 end
 
-    if Input:down 'rotleft'  then self:rotate(-80 * dt) end
-    if Input:down 'rotright' then self:rotate(80 * dt) end
+    if Input:down 'rotleft'  then self:rotate(-self.rotspeed * dt) end
+    if Input:down 'rotright' then self:rotate(self.rotspeed * dt) end
 end
 
 function Player:accelerate(speed)
@@ -24,10 +29,12 @@ end
 
 function Player:update(dt)
     self:input(dt)
+
     self.velocity = self.velocity + self.acceleration
     self.position = self.position + self.velocity
-    self.acceleration = vec(0, 0)
-    self.velocity:trimInplace(10)
+    self.velocity = self.velocity / self.friction -- friction
+    self.acceleration = vec(0, 0) 
+    self.velocity:trimInplace(self.maxspeed)
 end
 
 return Player
