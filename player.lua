@@ -8,10 +8,10 @@ function Player:initialize(image)
     self.velocity = vec(0, 0)
     self.acceleration = vec(0, 0)
 
-    self.thrust = 15
+    self.thrust = 12
     self.maxspeed = 10
     self.rotspeed = 90
-    self.friction = 1.04
+    self.friction = 1.03
 end
 
 function Player:input(dt)

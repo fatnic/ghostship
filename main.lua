@@ -16,7 +16,7 @@ Input = baton.new({
     rotright = {'key:right', 'key:d'},
     forwards = {'key:up', 'key:w'},
     reverse  = {'key:down', 'key:s'},
-    space    = {'key:space'},
+    fire     = {'key:space'},
     escape   = {'key:escape'},
 })
 
@@ -27,6 +27,7 @@ require 'states.game'
 
 -- love
 function love.load(args)
+    love.mouse.setVisible(false)
     Gamestate.registerEvents()
     Gamestate.switch(game)
 end
