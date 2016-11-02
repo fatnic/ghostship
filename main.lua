@@ -5,7 +5,9 @@ Log       = require 'ext.log'
 Camera    = require 'ext.hump.camera'
 Assets    = require('ext.cargo').init('assets')
 vec       = require 'ext.hump.vector'
+
 Player    = require 'player'
+Ghost     = require 'ghost'
 
 require 'libs.maths.helpers'
 
@@ -17,6 +19,7 @@ Input = baton.new({
     forwards = {'key:up', 'key:w'},
     reverse  = {'key:down', 'key:s'},
     fire     = {'key:space'},
+
     escape   = {'key:escape'},
 })
 

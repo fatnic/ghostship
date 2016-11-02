@@ -3,15 +3,12 @@ local Sprite = require 'libs.sprite'
 
 local Player = class('Player', Sprite)
 
-function Player:initialize(image)
-    Sprite.initialize(self, image)
-    self.velocity = vec(0, 0)
-    self.acceleration = vec(0, 0)
-
-    self.thrust = 12
-    self.maxspeed = 10
+function Player:initialize()
+    Sprite.initialize(self, Assets.images.ship)
+    self.thrust = 15
+    self.maxspeed = 12
     self.rotspeed = 90
-    self.friction = 1.03
+    self.friction = 1.02
 end
 
 function Player:input(dt)
@@ -22,19 +19,9 @@ function Player:input(dt)
     if Input:down 'rotright' then self:rotate(self.rotspeed * dt) end
 end
 
-function Player:accelerate(speed)
-    dir = rad2vec(self.rotation - (math.pi/2)) * speed
-    self.acceleration = self.acceleration + dir
-end
-
 function Player:update(dt)
     self:input(dt)
-
-    self.velocity = self.velocity + self.acceleration
-    self.position = self.position + self.velocity
-    self.velocity = self.velocity / self.friction -- friction
-    self.acceleration = vec(0, 0) 
-    self.velocity:trimInplace(self.maxspeed)
+    Sprite.update(self, dt)
 end
 
 return Player
