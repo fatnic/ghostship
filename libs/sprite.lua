@@ -30,6 +30,10 @@ function Sprite:rotate(deg)
     self.rotation = self.rotation + deg2rad(deg)
 end
 
+function Sprite:setScale(sc)
+    self.scale = vec(sc, sc)
+end
+
 function Sprite:update(dt)
     self.velocity = self.velocity + self.acceleration
     self.position = self.position + self.velocity
@@ -39,7 +43,14 @@ function Sprite:update(dt)
 end
 
 function Sprite:draw()
-    love.graphics.draw(self.image, self.position.x, self.position.y, self.rotation + (math.pi/2), self.scale.x, self.scale.y, self.origin.x, self.origin.y)
+    love.graphics.draw(self.image, 
+                       self.position.x, 
+                       self.position.y, 
+                       self.rotation + (math.pi/2), 
+                       self.scale.x, 
+                       self.scale.y, 
+                       self.origin.x, 
+                       self.origin.y)
 end
 
 return Sprite

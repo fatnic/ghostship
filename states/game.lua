@@ -16,9 +16,10 @@ function game:init()
     vWidth = love.graphics.getWidth() 
     vHeight = love.graphics:getHeight() 
 
-    for i=1, 100 do
+    for i=1, 20 do
         ghost = Ghost:new(math.random(1, worldx), math.random(1, worldy))
-        ghost.thrust = math.random(1, 1.5)
+        ghost.thrust = math.random(1, 20) / 10.0
+        ghost:setScale(0.5)
         table.insert(ghosts, ghost)
     end
 end
