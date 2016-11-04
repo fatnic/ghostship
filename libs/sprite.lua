@@ -22,6 +22,10 @@ function Sprite:accelerate(speed)
     self.acceleration = self.acceleration + dir
 end
 
+function Sprite:applyForce(force)
+    self.acceleration = self.acceleration + force
+end
+
 function Sprite:move(x, y)
     self.position = self.position + vec(x, y)
 end

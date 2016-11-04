@@ -4,12 +4,15 @@ Timer     = require 'ext.hump.timer'
 Log       = require 'ext.log'
 Camera    = require 'ext.hump.camera'
 Assets    = require('ext.cargo').init('assets')
+HC        = require 'ext.HC'
 vec       = require 'ext.hump.vector'
 
 Player    = require 'player'
 Ghost     = require 'ghost'
 
 require 'libs.maths.helpers'
+
+bughunt = true
 
 -- input
 baton = require 'ext.baton'
@@ -21,6 +24,7 @@ Input = baton.new({
     fire     = {'key:space'},
 
     escape   = {'key:escape'},
+    bughunt  = {'key:0'}
 })
 
 -- states

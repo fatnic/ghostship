@@ -9,6 +9,7 @@ function Player:initialize()
     self.maxspeed = 12
     self.rotspeed = 90
     self.friction = 1.02
+    self.AABB = HC.rectangle(0, 0, self.width, self.height)
 end
 
 function Player:input(dt)
@@ -22,6 +23,17 @@ end
 function Player:update(dt)
     self:input(dt)
     Sprite.update(self, dt)
+    self.AABB:moveTo(self.position:unpack())
+    self.AABB:setRotation(self.rotation)
+end
+
+function Player:draw()
+    Sprite.draw(self)
+    if bughunt then self:drawDebug() end
+end
+
+function Player:drawDebug()
+    self.AABB:draw('line')
 end
 
 return Player
